@@ -1,7 +1,7 @@
 # Ravens Progression AI
 
 ## Overview
-Ravens Progression AI is a machine learning project designed to analyze and simulate progression patterns using advanced algorithms. This project is inspired by Raven's Progressive Matrices, aiming to study and replicate progression patterns effectively.
+Ravens Progression AI is an AI project designed to analyze and simulate progression patterns using advanced algorithms. This project is inspired by Raven's Progressive Matrices, aiming to study and replicate progression patterns effectively.
 
 ## Features
 - **Pattern Recognition**: Identifies progression patterns in data sets.
