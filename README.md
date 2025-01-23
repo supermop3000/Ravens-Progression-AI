@@ -1,117 +1,159 @@
-# Ravens Progression AI
+Ravens Progression AI
 
-## Overview
-Ravens Progression AI is an AI project designed to analyze and simulate progression patterns using advanced algorithms. This project is inspired by Raven's Progressive Matrices, aiming to study and replicate progression patterns effectively.
+Overview
 
-## Features
-- **Pattern Recognition**: Identifies progression patterns in data sets.
-- **Customizable Models**: Supports different machine learning frameworks.
-- **Data Visualization**: Offers tools to visualize progression patterns.
-- **Scalability**: Optimized for large datasets and complex models.
+Ravens Progression AI is a machine learning project designed to analyze and simulate progression patterns using advanced algorithms. This project is inspired by Raven's Progressive Matrices, aiming to study and replicate progression patterns effectively.
 
-## Table of Contents
-1. [Getting Started](#getting-started)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Contributing](#contributing)
-5. [License](#license)
+Features
 
----
+Pattern Recognition: Identifies progression patterns in data sets.
 
-## Getting Started
+Customizable Models: Supports different machine learning frameworks.
 
-### Prerequisites
-To get started, you’ll need:
-- Python 3.8 or higher
-- Virtual environment tools (e.g., `venv`, `conda`)
-- Required Python libraries (see [Installation](#installation))
+Data Visualization: Offers tools to visualize progression patterns.
 
-### Clone the Repository
-```bash
-git clone https://github.com/supermop3000/ravens_progression_ai.git
-cd ravens_progression_ai
-```
+Scalability: Optimized for large datasets and complex models.
 
----
+AI Agent for Problem Solving: A specialized AI agent designed to solve Raven's Progressive Matrices by analyzing visual and logical patterns.
 
-## Installation
+AI Agent Overview
 
-1. **Set Up a Virtual Environment**:
-   ```bash
-   python3 -m venv env
-   source env/bin/activate  # On Windows, use `env\Scripts\activate`
-   ```
+Purpose of the AI Agent
 
-2. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+The AI agent is the core of this project and is specifically designed to solve Raven's Progressive Matrices, a type of visual puzzle used to test abstract reasoning. The agent uses image processing and logical reasoning to determine the correct answer by analyzing the relationships and transformations between visual figures.
 
-3. **Verify Installation**:
-   Run the following to check if the installation is successful:
-   ```bash
-   python main.py --help
-   ```
+Core Methods and Workflow
 
----
+1. Initialization
 
-## Usage
+__init__ Method:
 
-1. **Prepare Your Data**:
-   - Place your dataset in the `data/` directory.
-   - Ensure the dataset is in a compatible format (e.g., CSV, JSON).
+Initializes the agent with required libraries and configurations.
 
-2. **Train a Model**:
-   ```bash
-   python main.py --train --data data/input.csv --model output/model.pkl
-   ```
+Prepares the agent to process image-based puzzles.
 
-3. **Evaluate a Model**:
-   ```bash
-   python main.py --evaluate --model output/model.pkl --test data/test.csv
-   ```
+2. Solving Problems
 
-4. **Visualize Patterns**:
-   ```bash
-   python visualize.py --model output/model.pkl
-   ```
+Solve(problem) Method:
 
----
+The primary entry point for the agent to solve a given puzzle.
 
-## Contributing
+Determines whether the problem is a 2x2 or 3x3 matrix.
 
-We welcome contributions! To contribute:
+Calls helper methods to analyze transformations and relationships between figures.
 
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/new-feature
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add new feature"
-   ```
-4. Push to your branch:
-   ```bash
-   git push origin feature/new-feature
-   ```
-5. Submit a pull request.
+3. Image Comparison and Transformation
 
-Please ensure your code follows the project’s coding style and includes tests where applicable.
+Image Processing Methods:
 
----
+checkSame: Compares two images pixel-by-pixel to measure similarity.
 
-## License
+checkMirrorHoriz and checkMirrorVert: Detects horizontal and vertical mirroring transformations by flipping the images.
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+checkRotate90 and checkRotate270: Identifies rotational transformations by rotating the images by 90° or 270° and comparing them.
 
----
+Transformational Methods:
 
-## Contact
+checkAdd: Detects added elements between two images using image subtraction and comparison.
+
+checkDelete: Identifies removed elements by reversing the addition logic.
+
+4. Transformation Mapping
+
+getAllTransforms(problem) Method:
+
+Analyzes transformations between all possible pairs of figures (e.g., A → B, A → C).
+
+Returns a dictionary of transformations for further analysis.
+
+5. Optimal Solution Selection
+
+getHeroTransform(all_trans) Method:
+
+Combines and evaluates all possible transformations to determine the "hero transformation," or the best match for solving the puzzle.
+
+Uses weighted scoring to rank and select the most likely solution based on transformation similarities.
+
+Example Workflow
+
+Load a Problem:
+The agent begins by receiving a problem object containing figures (e.g., A, B, C, and possible answers).
+
+Analyze Transformations:
+It computes transformations between pairs of figures, such as rotations, mirrors, or additions.
+
+Compare Patterns:
+The agent compares transformations between the given figures and the answer choices.
+
+Select the Best Match:
+Based on the highest scoring transformation, the agent returns the most probable answer.
+
+Example Code
+
+To use the agent to solve a problem:
+
+from agent import Agent
+
+# Initialize the agent
+agent = Agent()
+
+# Solve a specific problem
+solution = agent.Solve(problem)
+print("Solution:", solution)
+
+Summary of Key Methods
+
+Method
+
+Description
+
+__init__
+
+Initializes the agent and prepares necessary tools and libraries.
+
+Solve(problem)
+
+Main method for solving a Raven's Progressive Matrix problem.
+
+getAllTransforms()
+
+Analyzes all transformations between figures in the problem.
+
+getHeroTransform()
+
+Selects the best answer based on transformation analysis.
+
+checkSame()
+
+Compares two images for pixel-level similarity.
+
+checkMirrorHoriz()
+
+Detects horizontal mirroring transformations.
+
+checkMirrorVert()
+
+Detects vertical mirroring transformations.
+
+checkRotate90()
+
+Detects 90° rotations.
+
+checkRotate270()
+
+Detects 270° rotations.
+
+checkAdd()
+
+Identifies added elements in the transformation.
+
+checkDelete()
+
+Identifies removed elements in the transformation.
+
+Contact
 
 For questions or support, feel free to open an issue or contact the project maintainer via GitHub.
-
----
 
 Thank you for using Ravens Progression AI!
 
