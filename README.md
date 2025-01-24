@@ -55,21 +55,6 @@ The AI agent is the core of this project and is specifically designed to solve *
 4. **Select the Best Match**:
    Based on the highest scoring transformation, the agent returns the most probable answer.
 
-### Example Code
-To use the agent to solve a problem:
-```python
-from agent import Agent
-
-# Initialize the agent
-agent = Agent()
-
-# Solve a specific problem
-solution = agent.Solve(problem)
-print("Solution:", solution)
-```
-
----
-
 ### Summary of Key Methods
 
 | Method                   | Description                                                                 |
@@ -87,12 +72,4 @@ print("Solution:", solution)
 | `checkDelete()`          | Identifies removed elements in the transformation.                          |
 
 ---
-
-## Contact
-
-For questions or support, feel free to open an issue or contact the project maintainer via GitHub.
-
----
-
-Thank you for using Ravens Progression AI!
 
